@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/nameList.css">
+    <script>
+
+        function fn_register(obj) {
+            let del = "<span class='del' onclick='deleteDiv()'>x</span>";
+            let msg = "<div id='my_div'>" + document.getElementById('userName').value + del + "</div>";
+            document.getElementById('nameList').innerHTML = msg + document.getElementById('nameList').innerHTML ;
+            document.getElementById('userName').value = "";
+        }
+        function fn_enter(e) {
+            console.log(e.keyCode); // 누르고 있는 키가 뭔지 볼수 있음
+            if (e.keyCode == 13) {
+                fn_register();
+            }
+        }
+        function deleteDiv() {
+            const div = document.getElementById('my_div');
+
+            div.remove();
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>참가 신청서</h1>
+        <form action="" onsubmit="return false">
+            <input type="text" id="userName" placeholder="이름을 입력하세요" onkeyup="fn_enter(event)" autocomplete="off"
+                required>
+            <button type="button" onclick="fn_register()">신청</button>
+        </form>
+        <hr>
+
+        <div id="nameList"></div>
+    </div>
+</body>
+
+</html>

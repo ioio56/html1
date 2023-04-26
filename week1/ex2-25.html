@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+    <style>
+        html,
+        body {
+            margin: 0 auto;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        video {
+            top: 0px;
+            left: 0px;
+            min-width: 100%;
+            max-width: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .title-cls {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+        }
+        .title-cls p {
+            z-index: 1;
+            color: white;
+            font-size: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h3> 비디오 삽인 </h3>
+    <hr>
+    <video src="./media/처음 보면 충격받는 수산시장의 손질 실태, 이렇게 팔아도 되는걸까_.mp4" autoplay muted loop></video>
+    <div class="title-cls">
+        <p>Fish</p>
+    </div>
+</body>
+
+</html>

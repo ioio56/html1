@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkbox 다중선택</title>
+</head>
+
+<body>
+    <div>
+        <h3>취미를 선텍하세요</h3>
+        <label for="p_all">전체</label><input type="checkbox" id="p_all" onchange="fn_change()">
+
+    </div>
+    <div>
+        <label for="">독서</label><input type="checkbox" name="hobby" value="read">
+        <label for="">요리</label><input type="checkbox" name="hobby" value="cook">
+        <label for="">게임</label><input type="checkbox" name="hobby" value="game">
+        <label for="">서핑</label><input type="checkbox" name="hobby" value="surf">
+        <input type="button" value="확인" onclick="fn_check()">
+
+    </div>
+    <script>
+        function fn_change() {
+            let obj = document.getElementsByName('hobby');
+            let msg = document.getElementById('p_all')
+            if (msg.checked) {
+                for (i in obj) {
+                    obj[i].checked = true;
+                }
+            } else {
+                for (i in obj) {
+                    obj[i].checked = false;
+                }
+            }
+        }
+
+        function fn_check() {
+            let obj = document.getElementsByName('hobby');
+            let msg = "당신의 취미는";
+            console.log(obj.length);
+            for (let i = 0; i < obj.length; i++) {
+                if (obj[i].checked) {
+                    msg += obj[i].value + "," + obj[i].previousSibling.innerHTML;
+                }
+            }
+            alert(msg + "입니다");
+        }
+
+    </script>
+
+</body>
+
+</html>
