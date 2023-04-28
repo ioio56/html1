@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid 그리기</title>
+    <style>
+        body {
+            background-color: aquamarine;
+            margin: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="420px" height="420px" style="background-color: red; margin: 20px;"></canvas>
+
+    <button onclick="fn_draw()">그려</button>
+    <script>
+
+        let w = 410;
+        let h = 410;
+        let p = 10;
+        let b = 10;
+        var parr = [];
+        let canvas = document.getElementById('myCanvas');
+        let context = canvas.getContext('2d');
+        let randx = 0;
+        let randy = 0;
+
+        function fn_draw() {
+
+            for (let i = 0; i < 11; i++) {
+                context.moveTo(p, b);
+                context.lineTo(p, h);
+                context.moveTo(b, p);
+                context.lineTo(w, p);
+                context.strokeStyle = 'black';
+                let div = document.createElement('div');
+                parr.push(p);
+                p += 40;
+            }
+            console.log(parr)
+            context.stroke();
+            randx = Math.floor(Math.random() * parr.length-1);
+            randy = Math.floor(Math.random() * parr.length-1);
+        }
+
+
+        canvas.addEventListener('click', (e) => {
+           let x = e.offsetX;// 마우스 y좌표
+           let y = e.offsetY;
+            console.log(randx, randy)
+            for (var i = 0; i < parr.length; i++) {
+                for (var k = 0; k < parr.length; k++) {
+                    if ((parr[i] <= x) && (x <= parr[i + 1])) {
+                        if ((parr[k] <= y) && (y <= parr[k + 1])) {
+
+                            if ((parr[randx] <= x) && (x <= parr[randx + 1])) {
+                                if ((parr[randy] <= y) && (y <= parr[randy + 1])) {
+                                    context.beginPath();
+                                    context.fillStyle = 'yellow';
+                                    context.rect((parr[i]), (parr[k]), 40, 40);
+                                    context.fill();
+                                    alert('지뢰 당첨');
+                                } else {
+                                    context.beginPath();
+                                    context.fillStyle = 'white';
+                                    context.rect((parr[i]), (parr[k]), 40, 40);
+                                    context.fill();
+                                }
+                            } else {
+                                context.beginPath();
+                                context.fillStyle = 'white';
+                                context.rect((parr[i]), (parr[k]), 40, 40);
+                                context.fill();
+                            }
+
+
+
+                        }
+                    }
+                }
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
