@@ -45,14 +45,14 @@
             }
             console.log(parr)
             context.stroke();
-            randx = Math.floor(Math.random() * parr.length-1);
-            randy = Math.floor(Math.random() * parr.length-1);
+            randx = Math.floor(Math.random() * parr.length - 1);
+            randy = Math.floor(Math.random() * parr.length - 1);
         }
 
 
         canvas.addEventListener('click', (e) => {
-           let x = e.offsetX;// 마우스 y좌표
-           let y = e.offsetY;
+            let x = e.offsetX;// 마우스 y좌표
+            let y = e.offsetY;
             console.log(randx, randy)
             for (var i = 0; i < parr.length; i++) {
                 for (var k = 0; k < parr.length; k++) {
